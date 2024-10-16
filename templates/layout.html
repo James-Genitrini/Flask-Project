@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block title %}
+        <title>Mon Potager</title>
+    {% endblock %}
+    {% block stylesheets %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/img/logo_carotte.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% include('_nav.html') %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for categorie, message in messages %}
+    <div role="alert" class="alert {{ categorie }}">
+           Information : <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block body %}
+    <h2>Association Mon Potager</h2>
+    <p>Bievenue sur la page d'accueil de l'interface web de gestion de la base de données de l'association <span style="text-decoration: underline;"><span style="color: green;">Mon</span>Potager</span></p>
+
+    <!-- L'image de carotte mise en icone centrée  -->
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='/img/logo_carotte.png') }}" alt="logo carotte" class="img-fluid">
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+    {#<script src="{{ url_for('static', filename='/bootstrap/js/bootstrap.js') }}"></script>#}
+{% endblock %}
+</body>
+</html>

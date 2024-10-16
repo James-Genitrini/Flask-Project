@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Modifier Ticket</title>
+{% endblock %}
+
+{% block body %}
+  <h2>Modifier un ticket</h2>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+  <form method="post" action="/ticket/edit">
+    <fieldset>
+        <legend> Modification du ticket n°<span style="color: green;">{{ ticket.id }}</span> </legend>
+        <input type="hidden" name="id" size="18" value="{{ ticket.id }}" id="id">
+        <label for="description">Description de l'incident</label><br>
+        <input type="text" name="description" size="30" value="{{ ticket.description }}" id="description"><br><br>
+        <label for="date_incident">Date d'enregistrement du ticket</label><br>
+        <input type="date" name="date_incident" value="{{ ticket.date }}" id="date_incident"><br><br>
+        <label for="statut">Statut du ticket</label><br>
+        <select name="statut" id="statut">
+            <option value="{{ ticket.parcelle_id }}" class="current">{{ ticket.statut }}</option>
+            <option value="A traiter" style="color : red;"> A traiter</option>
+            <option value="En cours" style="color : orange;"> En cours </option>
+            <option value="Résolu" style="color: green;"> Résolu </option>
+          </select>
+        <br>
+        <label for="parcelle_id">Parcelle concernée : <span style="color: green;">{{ ticket.parcelle  }}</span></label><br>
+        <select name="parcelle_id" id="parcelle_id">
+          <option value="{{ ticket.parcelle }}" class="current">Parcelle {{ ticket.parcelle }} : {{ parcelle[ticket.parcelle-1]['adresse'] }}</option>
+          {% for values in parcelle %}
+            <option value="{{ values.id }}">Parcelle {{ values.id }} : {{ values.adresse }} </option>
+          {%  endfor %}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Modifier" name="Modifier" id="modifier" >
+
+    </fieldset>
+  </form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Ajouter une interaction</title>
+{% endblock %}
+
+{% block body %}
+<h2>Ajout d'une nouvelle interaction</h2>
+{% if error %}
+<p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+<form method="post" action="/interaction/add">
+    <fieldset>
+        <input type="hidden" name="id" value="{{ adherent.id }}" id="id">
+        <legend>Nouvelle interaction</legend>
+        <label for="description_interaction">Description</label><br>
+        <input id="description_interaction" type="text" name="description_interaction" value="" placeholder="Decriver l'action menée" required><br>
+        <label for="date_interaction">Date de l'interaction</label><br>
+        <input id="date_interaction" type="date" name="date_interaction" required><br>
+        <label for="prix">Prix</label><br>
+        <input name="prix" type="decimal" id="prix" value="" placeholder="Saisir le coût de l'action" required><br>
+        <label for="culture">Type culture</label><br>
+        <select name="id_cat_interaction" id="id_cat_interaction" required>
+            <option value="">Sélectionner un type d'interaction</option>
+            {% for cat in cat %}
+                 <option value="{{ cat.id_cat }}"> {{ cat.descr }} </option>
+            {% endfor %}
+        </select><br>
+        <label for="id_adherent">Adhérent faisant l'action</label><br>
+        <select name="id_adherent" id="id_adherent" required>
+            <option value="">Sélectionner l'adhérent effectuant l'action</option>
+            {% for adherent in adherent %}
+                 <option value="{{ adherent.id_adherent }}"> {{ adherent.nom }} {{ adherent.prenom }} </option>
+            {% endfor %}
+        </select><br>
+        <label for="id_parcelle">Type culture</label><br>
+        <select name="id_parcelle" id="id_parcelle" required>
+            <option value="">Sélectionner la parcelle</option>
+            {% for parcelle in parcelle %}
+                 <option value="{{ parcelle.id_parcelle }}"> {{ parcelle.adresse }} </option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Creer" name="Valider" id="modifier">
+        <br>
+    </fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Modifier une variété</title>
+{% endblock %}
+
+{% block body %}
+  <h2>Modifier une variété</h2>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+  <form method="post" action="/variete/edit">
+    <fieldset>
+        <legend> Modification de la variété n° {{ variete.id }} </legend>
+        <input type="hidden" name="id" size="18" value="{{ variete.id }}" id="id">
+        <label for="nom">Nom</label><br>
+        <input type="text" name="nom" size="18" value="{{ variete.nom }}" id="nom"><br><br>
+
+        <label for="saison">saison</label><br>
+        <select name="saison" id="saison" required>
+        {% for saison in saison %}
+            <option value="{{ saison.saison }}"
+            {%  if variete.saison is defined
+                    and saison.saison == variete.saison %}
+            selected
+                    {% endif %}>
+
+                    {{ saison.saison }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="culture">Type culture</label><br>
+        <select name="culture" id="culture" required>
+            {% for culture in culture %}
+                <option value="{{ culture.id_culture }}"
+                {%  if variete.culture is defined
+                        and culture.id_culture == variete.culture %}
+                selected
+                {% endif %} >
+                    {{ culture.nom }} </option>
+            {% endfor %}
+        </select><br>
+        <label for="prix_kg">Prix au kg</label><br>
+        <input name="prix_kg" type="decimal" id="prix_kg" value="{{ variete.prix }}" placeholder="Saisir le prix au kg" required>
+        <br>
+        <label for="stock">Stock au kg</label><br>
+        <input name="stock" type="decimal" id="stock" value="{{ variete.stock }}" placeholder="Saisir le stock en kg" required><br>
+        <input type="submit" value="Modifier" name="Modifier" id="modifier" >
+
+    </fieldset>
+  </form>
+{% endblock %}

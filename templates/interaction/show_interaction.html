@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Les interactions</title>
+{% endblock %}
+
+{% block body %}
+
+<h3>Interaction</h3>
+<br>
+<a href="/interaction/add" class="btn btn-primary add">Ajouter une nouvelle interaction</a>
+<br>
+<br><br>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Categorie</th>
+          <th>Description</th>
+          <th>Prix</th>
+            <th>Date</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+          <th>Editer</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if interaction | length >= 1 %}
+        {% for ligne in interaction %}
+        <tr>
+          <td>{{ ligne.id }}</td>
+          <td>{{ ligne.libelle_cat_interaction }}</td>
+          <td>{{ ligne.description_interaction }}</td>
+          <td>{{ ligne.prix }}€</td>
+            <td>{{ ligne.date_interaction }}</td>
+            <td>{{  ligne.nom }}</td>
+            <td>{{ ligne.prenom }}</td>
+          <td><a href="/interaction/edit?id={{ ligne.id }}" class="btn btn-primary">Éditer</a></td>
+          <td><a href="/interaction/delete?id={{ ligne.id }}" class="btn btn-primary">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+</div>
+  {% endblock %}

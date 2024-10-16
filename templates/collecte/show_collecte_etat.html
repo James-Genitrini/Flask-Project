@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Etat collecte</title>
+{% endblock %}
+
+{% block body %}
+
+<h3>Etat collecte</h3>
+<br>
+<div class="table-responsive">
+  <h3>Statistiques collectes</h3>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th style="color: black!important;">Culture</th>
+        <th style="color: black!important;">Quantité Totale</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ligne in quantite %}
+      <tr>
+        <td>{{ ligne.produit }}</td>
+        <td>{{ ligne.quantite }} kg</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<hr>
+<p>La parcelle qui a rapporté le plus de récoltes est la parcelle n°{{ parcelle_max }}</p>
+<p>La parcelle qui a rapporté le moins de récoltes est la parcelle n°{{ parcelle_min }}</p>
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th style="color: black!important;">Parcelle</th>
+          <th style="color: black!important;">Total récolté dessus</th>
+        </tr>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ligne in quantite_parcelle_total %}
+      <tr>
+        <td>Parcelle n°{{ ligne.id }} : {{ ligne.adresse }}</td>
+        <td>{{ ligne.quantite }} kg</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

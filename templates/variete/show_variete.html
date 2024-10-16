@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Les variétés</title>
+{% endblock %}
+
+{% block body %}
+
+<h3>Variétés</h3>
+<br>
+<a href="/variete/add" class="btn btn-primary add">Ajouter une nouvelle variété</a>
+<br>
+<br><br>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Variété</th>
+          <th>Saison</th>
+          <th>Culture</th>
+            <th>Prix kg</th>
+            <th>En stock</th>
+          <th>Editer</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if variete | length >= 1 %}
+        {% for ligne in variete %}
+        <tr>
+          <td>{{ ligne.id }}</td>
+          <td>{{ ligne.nom }}</td>
+          <td>{{ ligne.saison }}</td>
+          <td>{{ ligne.type_culture }}</td>
+            <td>{{ ligne.prix }}€/kg</td>
+            <td>{{  ligne.stock }}kg</td>
+          <td><a href="/variete/edit?id={{ ligne.id }}" class="btn btn-primary">Éditer</a></td>
+          <td><a href="/variete/delete?id={{ ligne.id }}" class="btn btn-primary">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+</div>
+  {% endblock %}

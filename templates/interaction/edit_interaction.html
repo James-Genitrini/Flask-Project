@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Modifier une interaction</title>
+{% endblock %}
+
+{% block body %}
+  <h2>Modifier une interaction</h2>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+  <form method="post" action="/interaction/edit">
+    <fieldset>
+        <legend> Modification de l'interaction n° {{ interaction.id }} </legend>
+        <input type="hidden" name="id" size="18" value="{{ interaction.id }}" id="id">
+        <label for="description_interaction">Description</label><br>
+        <input type="text" name="description_interaction" size="18" value="{{ interaction.description_interaction }}" id="description_interaction"><br><br>
+
+        <label for="date_interaction">Date</label><br>
+        <input type="date" name="date_interaction" size="18" value="{{ interaction.date_interaction }}" id="date_interaction"><br><br>
+
+        <label for="prix">Prix</label><br>
+        <input name="prix" type="decimal" id="prix" value="{{ interaction.prix }}" placeholder="Saisir le prix au kg" required><br>
+
+        <label for="id_cat_interaction">Type d'interaction</label><br>
+        <select name="id_cat_interaction" id="id_cat_interaction" required>
+            {% for cat in cat %}
+                <option value="{{ cat.id_cat }}">
+                    {{ cat.descr }} </option>
+            {% endfor %}
+        </select><br>
+
+        <label for="id_adherent">Adhérent</label><br>
+        <select name="id_adherent" id="id_adherent" required>
+            {% for adherent in adherent %}
+                <option value="{{ adherent.id_adherent }}">
+                    {{ adherent.nom }} {{ adherent.prenom }} </option>
+            {% endfor %}
+        </select><br>
+
+        <label for="id_parcelle">Parcelle affectée</label><br>
+        <select name="id_parcelle" id="id_parcelle" required>
+            {% for parcelle in parcelle %}
+                <option value="{{ parcelle.id_parcelle }}">
+                    {{ parcelle.adresse }} </option>
+            {% endfor %}
+        </select><br>
+
+        <input type="submit" value="Modifier" name="Modifier" id="modifier" >
+
+    </fieldset>
+  </form>
+{% endblock %}

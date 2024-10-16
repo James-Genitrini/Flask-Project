@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Les collectes</title>
+{% endblock %}
+
+{% block body %}
+
+<h3>Collectes</h3>
+<br>
+<a href="/collecte/add" class="btn btn-primary add">Ajouter une nouvelle collecte</a>
+<br>
+<br><br>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Quantité (kg)</th>
+          <th>Produit</th>
+          <th>Date</th>
+          <th>Collecté</th>
+          <th>Editer</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if collectes | length >= 1 %}
+        {% for ligne in collectes %}
+        <tr>
+          <td>{{ ligne.id }}</td>
+          <td>{{ ligne.quantite }}</td>
+          <td>{{ ligne.produit }}</td>
+          <td>{{ ligne.date }}</td>
+          <td>Sur la parcelle n°{{ ligne.parcelle_id }}</td>
+          <td><a href="/collecte/edit?id={{ ligne.id }}" class="btn btn-primary">Éditer</a></td>
+          <td><a href="/collecte/delete?id={{ ligne.id }}" class="btn btn-primary">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+</div>
+  {% endblock %}

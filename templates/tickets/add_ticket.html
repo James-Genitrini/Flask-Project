@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Créer ticket</title>
+{% endblock %}
+
+{% block body %}
+<h2>Créer un nouveau ticket</h2>
+{% if error %}
+<p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+<form method="post" action="/ticket/add">
+    <fieldset>
+        <legend>Nouveau ticket</legend>
+        <label for="description_ticket">Description de l'Incident</label><br>
+        <input id="description_ticket" type="text" name="description_ticket" value="" placeholder="Saisir une description" required><br>
+        <label for="date">Date de constatation de l'incident</label><br>
+        <input name="date" type="date" id="date" value="" placeholder="Saisir la date" required><br>
+        <label for="statut">Statut</label><br>
+        <select name="statut" id="statut" required>
+            <option value="">Sélectionner un statut</option>
+            <option value="A traiter" style="color : red;"> A traiter</option>
+            <option value="En cours" style="color : orange;"> En cours </option>
+            <option value="Résolu" style="color: green;"> Résolu </option>
+        </select><br>
+        <br>
+        <label for="parcelle">Parcelle concernée</label>
+        <br>
+        <select name="parcelle" id="parcelle" required>
+            <option value="">Sélectionner une parcelle</option>
+            {% for ligne in parcelle %}
+            <option value="{{ ligne.id }}">Parcelle {{ ligne.id }} : {{ ligne.adresse }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Creer" name="Valider" id="modifier">
+        <br>
+    </fieldset>
+</form>
+{% endblock %}

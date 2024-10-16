@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Ajouter une collecte</title>
+{% endblock %}
+
+{% block body %}
+<h2>Ajout d'une nouvelle collecte</h2>
+{% if error %}
+<p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+<form method="post" action="/collecte/add">
+    <fieldset>
+        <legend>Nouvelle collecte</legend>
+        <label for="quantite">Quantité</label><br>
+        <input id="quantite" type="decimal" name="quantite" value="" placeholder="En kg" required><br>
+        <label for="produit">Produit</label><br>
+        <input id="produit" type="text" name="produit" value="" placeholder="Saisir le produit" required><br>
+        <label for="date">Date</label><br>
+        <input id="date" type="datetime" name="date" value="" placeholder="année-mois-jour h:m:s"><br>
+        <br>
+        <label for="parcelle_id">Parcelle</label><br>
+        <select name="parcelle_id" id="parcelle_id" required>
+            <option value="">Saisir une valeur</option>
+            {% for values in parcelles %}
+                <option value="{{ values.id }}">{{ values.adresse }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Creer" name="Valider" id="modifier">
+        <br>
+    </fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Ajouter une variété</title>
+{% endblock %}
+
+{% block body %}
+<h2>Ajout d'une nouvelle variété</h2>
+{% if error %}
+<p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+<form method="post" action="/variete/add">
+    <fieldset>
+        <legend>Nouvelle variété</legend>
+        <label for="libelle_variete">Nom de variété</label><br>
+        <input id="libelle_variete" type="text" name="libelle_variete" value="" placeholder="Saisir le nom de la variété" required><br>
+        <label for="saison">Saison de la variété</label><br>
+        <select name="saison" id="saison" required>
+            <option value="">Sélectionner une saison</option>
+            {% for saison in saison %}
+                 <option value="{{ saison.saison }}"> {{ saison.saison }} </option>
+            {% endfor %}
+        </select><br>
+        <label for="culture">Type culture</label><br>
+        <select name="culture" id="culture" required>
+            <option value="">Sélectionner un type de culture</option>
+            {% for culture in culture %}
+                 <option value="{{ culture.id_culture }}"> {{ culture.nom }} </option>
+            {% endfor %}
+        </select><br>
+        <label for="prix_kg">Prix au kg</label><br>
+        <input name="prix_kg" type="decimal" id="prix_kg" value="" placeholder="Saisir le prix au kg" required>
+        <br>
+        <label for="stock">Stock au kg</label><br>
+        <input name="stock" type="decimal" id="stock" value="" placeholder="Saisir le stock en kg" required><br>
+        <input type="submit" value="Creer" name="Valider" id="modifier">
+        <br>
+    </fieldset>
+</form>
+{% endblock %}

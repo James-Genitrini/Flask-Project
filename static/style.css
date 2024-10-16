@@ -1,0 +1,253 @@
+body {
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  background: #fffffffa;
+  color: #000;
+  padding: 5px;
+}
+
+nav {
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  margin-top: 10px;
+  padding-left: 30px;
+  z-index: 10;
+  border-radius: 40px;
+}
+
+nav a:hover {
+  color: grey!important;
+  background: transparent;
+  text-shadow: 0 0 1px grey;
+
+  scale: 1.1;
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:active {
+  color: grey!important;
+  background: transparent;
+  text-shadow: 0 0 1px grey;
+
+  scale: 1.1;
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:focus {
+  color: grey!important;
+  background: transparent;
+  text-shadow: 0 0 1px grey;
+
+  scale: 1.1;
+  transition: all 0.2s ease-in-out;
+}
+
+nav li {
+  display: inline-block;
+  padding: 0 20px 0 20px;
+    line-height: 30px;
+}
+
+nav li a {
+  color: grey;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+nav li a:hover {
+    color: green!important;
+
+    background: transparent !important;
+    scale: 1.1;
+    transition: all 0.2s ease-in-out;
+}
+
+nav ul {
+  float: right;
+  margin-right: 30px;
+}
+
+a:not(nav a) {
+    color : green!important;
+    text-decoration: none;
+}
+
+a:hover {
+    color : rgb(45, 167, 45)!important;
+}
+
+h2 {
+    position: relative;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+p {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background: green;
+    color: white!important;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    border: transparent;
+}
+
+.btn:hover {
+    background: rgb(45, 167, 45);
+    color: #fff!important;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+th {
+    background: green;
+    color: green!important;
+    font-weight: 600;
+    padding: 10px;
+    text-align: left;
+    border: transparent;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+tr:hover {
+    background: #ddd;
+}
+
+.current {
+    color: black!important;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    background-color: green;
+}
+
+input {
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    transition: all 0.2s ease-in-out;
+}
+
+input:hover {
+    border: 1px solid green;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"] {
+    background: green;
+    color: white!important;
+    font-weight: 600;
+    border: transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background: rgb(45, 167, 45);
+    color: #fff!important;
+    transition: all 0.2s ease-in-out;
+}
+
+select {
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    transition: all 0.2s ease-in-out;
+}
+
+select:hover {
+    border: 1px solid green;
+    transition: all 0.2s ease-in-out;
+}
+
+select:focus {
+    border: 1px solid green;
+    transition: all 0.2s ease-in-out;
+}
+
+select option:hover {
+    border: 1px solid green;
+    transition: all 0.2s ease-in-out;
+}
+
+h3 {
+    text-align: center;
+}
+
+
+.table-chart h3 {
+    margin-bottom: 50px;
+}
+
+.table-chart table {
+    width:50%;
+    border-collapse: separate;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.table-chart th {
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+}
+
+.table-chart td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+canvas {
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+    left: 900px;
+    bottom : 350px;
+    /* A coté du de la table */
+    /* Bordure */
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    display: block;
+}

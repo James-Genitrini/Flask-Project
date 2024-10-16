@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Modifier Collecte</title>
+{% endblock %}
+
+{% block body %}
+  <h2>Modifier une Collecte</h2>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+  <form method="post" action="/collecte/edit">
+    <fieldset>
+        <legend>Modification de la collecte de {{ collectes[0]['produit'] }} du {{ collectes[0]['date'] }}</legend>
+        <input type="hidden" name="id" value="{{ collectes[0]['id'] }}" id="id">
+        <label for="quantite">Quantité (kg)</label><br>
+        <input id="quantite" type="decimal" name="quantite" value="{{ collectes[0]['quantite'] }}"required><br>
+        <label for="produit">Produit</label><br>
+        <input id="produit" type="text" name="produit" value="{{ collectes[0]['produit'] }}" required><br>
+        <label for="date">Date</label><br>
+        <input id="date" type="datetime" name="date" value="{{ collectes[0]['date'] }}" placeholder="année-mois-jour h:m:s"><br>
+        <br>
+        <label for="parcelle_id">Collecte effectuée sur la parcelle <span style="color: green;">{{ collectes[0]['parcelle_id'] }}</span> à l'adresse {{ parcelles[collectes[0]['parcelle_id']-1]['adresse'] }}</label><br>
+        <select name="parcelle_id" id="parcelle_id" required>
+            <option value="{{ collectes[0]['parcelle_id'] }}" class="current">Parcelle {{ collectes[0]['parcelle_id'] }} : {{ parcelles[collectes[0]['parcelle_id']-1]['adresse'] }}</option>
+            {% for values in parcelles %}
+                <option value="{{ values.id }}">{{ values.adresse }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Modifier" name="Modifier" id="modifier" >
+
+    </fieldset>
+  </form>
+{% endblock %}
